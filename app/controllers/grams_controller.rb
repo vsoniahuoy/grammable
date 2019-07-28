@@ -71,11 +71,15 @@ class GramsController < ApplicationController
     params.require(:gram).permit(:message, :picture)
   end
 
+  # render_not_found method were in gram_controller and comment_control
+  # refactor code to be cleaner, move render_not_found method to the gneral file
+  # app/controllers/application_controller.rb
+  # Thus, both gram_controller and comment_controller can access this method
 
   # Make it generic that render_not found can apply to not found and forbidden cases
-  def render_not_found(status=:not_found)
-    render plain: "#{status.to_s.titleize} :(", status: status
-  end
+  # def render_not_found(status=:not_found)
+  #   render plain: "#{status.to_s.titleize} :(", status: status
+  # end
 
   # def render_not_found
   # if @gram.blank only apply to blank.
